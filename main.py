@@ -1,15 +1,8 @@
 from fastapi import FastAPI
-import pyfiglet
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 async def root():
-    # Define the message
-    message = "welcome to genesys info.com"
-    
-    # Generate the ASCII art version of the message using pyfiglet
-    ascii_art = pyfiglet.figlet_format(message)
-    
-    # Return the ASCII art as part of the response
-    return {"message": ascii_art}
+    return "<b>Welcome to genesys info.com</b>"
